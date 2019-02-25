@@ -38,9 +38,10 @@ title 		= args.title	# The title of the report.
 # Look for the files in the input directory.
 files = []
 for file in os.listdir(inputDir):
-    if file.endswith(".ps") or file.endswith(".eps"):
+    if file.endswith(".ps") or file.endswith(".eps") or file.endswith(".pdf"):
         files.append(file)
 
+files = sorted(files)
 
 # Create the report
 latexFile = open(outputFileName,"w")
@@ -51,7 +52,7 @@ for i in range(0,numFigures):
     for j in range(i*int(numImagesPerRow),(i+1)*int(numImagesPerRow)):
         if j < len(files):
            latex.BeginMiniPage(latexFile,numImagesPerRow)
-           latex.IncludeGraphics(latexFile,files[j],True)
+           latex.IncludeGraphics(latexFile,files[j],False,1.0)
            latex.EndMiniPage(latexFile)
     latex.EndFigure(latexFile)
 latex.EndDocument(latexFile)

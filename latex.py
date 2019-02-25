@@ -52,11 +52,11 @@ def EndFigure(fileObject):
     return
 
 
-def IncludeGraphics(fileObject,imageFileName,rotate):
+def IncludeGraphics(fileObject,imageFileName,rotate,size=0.7):
     if rotate:
-        fileObject.write("\includegraphics[width=0.7\linewidth,angle=-90]{"+imageFileName+"}\n")
+        fileObject.write("\includegraphics[width="+str(size)+"\linewidth,angle=-90]{"+imageFileName+"}\n")
     else: 
-        fileObject.write("\includegraphics[width=0.7\linewidth]{"+imageFileName+"}\n")
+        fileObject.write("\includegraphics[width="+str(size)+"\linewidth]{"+imageFileName+"}\n")
     return
 
 
